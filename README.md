@@ -2,6 +2,18 @@
 
 A comprehensive educational platform combining a technical book, interactive website, AI-powered RAG chatbot, and multilingual support for learning Physical AI, Humanoid Robotics, ROS 2, and autonomous systems.
 
+## 🚀 Quick Deploy
+
+**Frontend (Already Deployed):** [https://book-assignment-quu4n1p3s-farhats-projects-27800a4d.vercel.app](https://book-assignment-quu4n1p3s-farhats-projects-27800a4d.vercel.app)
+
+**Backend (One-Click Deploy):**
+
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Farhat-Naz/newhumandiod-book)
+
+*Click the button above to deploy all backend services (Authentication, RAG Chatbot, Translation) in 5 minutes!*
+
+📖 [Detailed Deployment Guide](./DEPLOY-ONE-CLICK.md)
+
 ## 🎯 Project Overview
 
 This platform provides an integrated learning experience for mastering humanoid robotics, from theoretical foundations to hands-on implementation with real robots. It combines:

@@ -1,0 +1,75 @@
+{
+  "services": [
+    {
+      "type": "web",
+      "name": "physicalai-backend",
+      "env": "python",
+      "region": "ohio",
+      "plan": "free",
+      "buildCommand": "cd backend && pip install -r requirements.txt",
+      "startCommand": "cd backend && uvicorn src.main:app --host 0.0.0.0 --port $PORT",
+      "healthCheckPath": "/health",
+      "envVars": [
+        {
+          "key": "JWT_SECRET",
+          "generateValue": true
+        },
+        {
+          "key": "JWT_ALGORITHM",
+          "value": "HS256"
+        },
+        {
+          "key": "ACCESS_TOKEN_EXPIRE_MINUTES",
+          "value": "15"
+        },
+        {
+          "key": "REFRESH_TOKEN_EXPIRE_DAYS",
+          "value": "7"
+        },
+        {
+          "key": "CORS_ORIGINS",
+          "sync": false
+        }
+      ]
+    },
+    {
+      "type": "web",
+      "name": "physicalai-rag",
+      "env": "python",
+      "region": "ohio",
+      "plan": "free",
+      "buildCommand": "cd rag && pip install -r requirements.txt",
+      "startCommand": "cd rag && uvicorn src.main:app --host 0.0.0.0 --port $PORT",
+      "healthCheckPath": "/health",
+      "envVars": [
+        {
+          "key": "QDRANT_URL",
+          "sync": false
+        },
+        {
+          "key": "QDRANT_API_KEY",
+          "sync": false
+        },
+        {
+          "key": "CLAUDE_API_KEY",
+          "sync": false
+        }
+      ]
+    },
+    {
+      "type": "web",
+      "name": "physicalai-agent",
+      "env": "python",
+      "region": "ohio",
+      "plan": "free",
+      "buildCommand": "cd agent && pip install -r requirements.txt",
+      "startCommand": "cd agent && python src/main.py",
+      "envVars": [
+        {
+          "key": "TRANSLATION_API_KEY",
+          "sync": false
+        }
+      ]
+    }
+  ]
+}
