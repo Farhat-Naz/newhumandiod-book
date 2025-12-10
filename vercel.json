@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd website && npm ci && npm run build",
-  "outputDirectory": "website/build",
-  "installCommand": "cd website && npm ci",
-  "framework": "docusaurus-2",
-  "public": false
+  "public": true,
+  "cleanUrls": true,
+  "trailingSlash": false
 }
