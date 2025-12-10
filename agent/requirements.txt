@@ -1,0 +1,27 @@
+# Async Framework
+aiohttp==3.9.1
+asyncio==3.4.3
+
+# Configuration
+pydantic==2.5.2
+pydantic-settings==2.1.0
+python-dotenv==1.0.0
+
+# Translation Libraries
+# Note: Uncomment based on chosen translation model
+# transformers==4.36.0  # For SeamlessM4T or Qwen2.5-translation
+# torch==2.1.2  # Required for transformers
+# sentencepiece==0.1.99  # Required for some translation models
+openai==1.6.1  # For GPT-4o-mini translation option
+
+# Text Processing
+markdownify==0.11.6
+markdown==3.5.1
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1
+
+# Development
+black==23.12.0
+flake8==6.1.0

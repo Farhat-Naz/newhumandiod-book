@@ -1,0 +1,179 @@
+This section defines the technical and functional specifications for the platform.
+
+2.1 BOOK SPECIFICATIONS (CONTENT)
+Book Title
+
+Physical AI & Humanoid Robotics: From Digital Intelligence to Embodied Agents
+
+Format
+
+4 Modules → 13 Weeks → 20+ Chapters
+
+Each chapter contains:
+
+Introduction
+
+Detailed theory
+
+Technical breakdown
+
+Practical exercises
+
+Diagrams (ASCII)
+
+Python/ROS code
+
+Summary
+
+Glossary
+
+2.2 WEBSITE PLATFORM SPECIFICATIONS
+Framework
+
+Docusaurus 3
+
+Custom theme for robotics + AI
+
+Dark/Light mode
+
+Integrated diagrams (Mermaid.js)
+
+Code blocks with syntax highlighting
+
+Fully responsive
+
+Key Website Sections
+
+Book Chapters
+
+Weekly Learning Schedule
+
+Interactive Diagrams
+
+Code Labs
+
+ROS & Simulation Tutorials
+
+RAG Chatbot Interface
+
+Auth Dashboard
+
+API Playground
+
+2.3 AUTHENTICATION SYSTEM
+Auth Type
+
+JWT-based authentication
+
+Email/Password login
+
+OAuth2 (optional)
+
+Stack
+
+Python FastAPI backend
+
+PostgreSQL or Supabase
+
+bcrypt password hashing
+
+Features
+
+Sign Up / Login
+
+Role-based access:
+
+Student
+
+Instructor
+
+Admin
+
+Rate limiting
+
+Token refresh
+
+2.4 RAG CHATBOT SPECIFICATION
+Models
+
+Qwen 2.5 (local via Ollama) for retrieval
+
+Claude 3.7 / Opus for final answer refinement
+
+Pipeline
+
+User asks question
+
+Embedding generated using Qwen Embedding model
+
+Qdrant vector search retrieves relevant book passages
+
+Context sent to Claude for polished, structured output
+
+Answer delivered to frontend
+
+Components
+
+Qdrant Vector Database
+
+Python FastAPI retrieval service
+
+Websocket for streaming AI responses
+
+2.5 TRANSLATION SYSTEM
+Translation Pipeline
+
+Model: SeamlessM4T, Qwen2.5-translation, or OpenAI GPT-4o-mini
+
+Supports:
+
+English → Urdu
+
+English → Any language
+
+Urdu → English
+
+Auto-translate at build time
+
+Users select language from UI
+
+Docusaurus Integration
+
+i18n directory:
+
+/i18n/ur/
+/i18n/ar/
+/i18n/zh/
+
+2.6 DEPLOYMENT SPECIFICATIONS
+GitHub Structure
+/backend
+/frontend
+/book
+/rag
+/models
+/docs
+
+Deployment Targets
+
+Frontend: Vercel / Netlify
+
+Backend: Render / Railway / Docker VPS
+
+Qdrant: Qdrant Cloud or self-hosted Docker
+
+Ollama (Qwen): Local or Cloud GPU
+
+Auth DB: Supabase or PostgreSQL Docker
+
+GitHub Actions
+
+Auto-build Docusaurus
+
+Auto-deploy website
+
+Run tests
+
+Push book PDF
+
+Update embeddings in Qdrant
