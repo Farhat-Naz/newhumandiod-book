@@ -15,15 +15,17 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://physical-ai-robotics.vercel.app',
+  url: 'https://farhat-naz.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/newhumandiod-book/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'physicalai', // Usually your GitHub org/user name.
-  projectName: 'book-assignment', // Usually your repo name.
+  organizationName: 'Farhat-Naz', // Usually your GitHub org/user name.
+  projectName: 'newhumandiod-book', // Usually your repo name.
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
 
