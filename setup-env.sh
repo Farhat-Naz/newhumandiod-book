@@ -64,7 +64,7 @@ if [ "$env_choice" = "1" ]; then
         fi
     fi
 
-    cp .env.local .env
+    cp .env.local.template .env
 
     echo ""
     echo "✓ Created .env file from template"

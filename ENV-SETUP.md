@@ -18,7 +18,7 @@ bash setup-env.sh
 **Option 2: Manual setup**
 ```bash
 # Copy the local environment file
-cp .env.local .env
+cp .env.local.template .env
 
 # Edit .env and add your Claude API key
 # Get it from: https://console.anthropic.com/
@@ -60,8 +60,8 @@ Run the setup script and choose option 2, or manually copy `.env.production.temp
 
 ## Environment Files Overview
 
-### `.env.local`
-**Purpose**: Local development with Docker Compose
+### `.env.local.template`
+**Purpose**: Local development template with Docker Compose
 **Security**: Safe to commit (no real credentials)
 **Usage**: Copy to `.env` and add your Claude API key
 

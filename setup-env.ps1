@@ -63,7 +63,7 @@ if ($envChoice -eq "1") {
     }
 
     # Copy local template
-    Copy-Item ".env.local" ".env" -Force
+    Copy-Item ".env.local.template" ".env" -Force
     Write-Host "✓ Created .env file from template" -ForegroundColor Green
     Write-Host ""
     Write-Host "Now, let's configure the required variables:" -ForegroundColor Yellow
