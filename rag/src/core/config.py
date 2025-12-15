@@ -46,6 +46,9 @@ class Settings(BaseSettings):
         "http://127.0.0.1:3001",
         "http://127.0.0.1:5000",
         "http://website:3000",
+        "https://newhumandiod-book.vercel.app",
+        "https://newhumandiod-book-git-master-farhats-projects-27800a4d.vercel.app",
+        "https://*.vercel.app",  # Allow all Vercel preview deployments
     ]
 
     # Logging
