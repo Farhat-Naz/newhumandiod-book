@@ -34,20 +34,51 @@ const config: Config = {
 
   onBrokenLinks: 'warn',
 
-  // Multilingual support - currently only English enabled
-  // Other languages (Urdu, Arabic, Chinese) will be enabled after backend translation service is deployed
+  // Multilingual support - 10 languages enabled!
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'], // Only English for now
+    locales: ['en', 'es', 'fr', 'de', 'zh', 'ar', 'ur', 'pt', 'ja', 'ko'],
     localeConfigs: {
       en: {
         label: 'English',
         direction: 'ltr',
       },
-      // Disabled until translation service is ready:
-      // ur: { label: 'اردو', direction: 'rtl' },
-      // ar: { label: 'العربية', direction: 'rtl' },
-      // zh: { label: '中文', direction: 'ltr' },
+      es: {
+        label: 'Español',
+        direction: 'ltr',
+      },
+      fr: {
+        label: 'Français',
+        direction: 'ltr',
+      },
+      de: {
+        label: 'Deutsch',
+        direction: 'ltr',
+      },
+      zh: {
+        label: '中文',
+        direction: 'ltr',
+      },
+      ar: {
+        label: 'العربية',
+        direction: 'rtl',
+      },
+      ur: {
+        label: 'اردو',
+        direction: 'rtl',
+      },
+      pt: {
+        label: 'Português',
+        direction: 'ltr',
+      },
+      ja: {
+        label: '日本語',
+        direction: 'ltr',
+      },
+      ko: {
+        label: '한국어',
+        direction: 'ltr',
+      },
     },
   },
 
@@ -112,11 +143,10 @@ const config: Config = {
           label: 'Course',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
-        // Locale dropdown disabled until translation service is deployed
-        // {
-        //   type: 'localeDropdown',
-        //   position: 'right',
-        // },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
         {
           href: 'https://github.com/physicalai/book-assignment',
           label: 'GitHub',

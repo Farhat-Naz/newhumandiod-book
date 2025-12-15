@@ -1,0 +1,34 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Module 1: Foundations of Physical AI": {
+    "message": "Module 1: Foundations of Physical AI",
+    "description": "The label for category 'Module 1: Foundations of Physical AI' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Module 1: Foundations of Physical AI.link.generated-index.title": {
+    "message": "Module 1: Foundations of Physical AI & Humanoid Robotics",
+    "description": "The generated-index page title for category 'Module 1: Foundations of Physical AI' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Module 1: Foundations of Physical AI.link.generated-index.description": {
+    "message": "Learn the foundations of Physical AI and humanoid robotics, including hardware systems, sensors, perception, and control fundamentals.",
+    "description": "The generated-index page description for category 'Module 1: Foundations of Physical AI' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Module 2: ROS 2 & Gazebo": {
+    "message": "Module 2: ROS 2 & Gazebo",
+    "description": "The label for category 'Module 2: ROS 2 & Gazebo' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Module 2: ROS 2 & Gazebo.link.generated-index.title": {
+    "message": "Module 2: ROS 2 & Gazebo Simulation",
+    "description": "The generated-index page title for category 'Module 2: ROS 2 & Gazebo' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Module 2: ROS 2 & Gazebo.link.generated-index.description": {
+    "message": "Master ROS 2 architecture, URDF modeling, Gazebo simulation, and navigation stack for building intelligent robotic systems.",
+    "description": "The generated-index page description for category 'Module 2: ROS 2 & Gazebo' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.doc.Welcome": {
+    "message": "Welcome",
+    "description": "The label for the doc item 'Welcome' in sidebar 'tutorialSidebar', linking to the doc intro"
+  }
+}
