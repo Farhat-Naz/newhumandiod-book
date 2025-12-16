@@ -1,14 +1,13 @@
-import React, { createContext, useState, useEffect, useContext } from 'react';
-import {
-  User,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged,
-  GoogleAuthProvider,
-  signInWithPopup
-} from 'firebase/auth';
-import { auth } from './firebase';
+import React, { createContext, useContext } from 'react';
+import { useSignIn, useSignUp, useUser, useClerk } from '@clerk/clerk-react';
+
+interface User {
+  id: string;
+  email: string | null;
+  firstName: string | null;
+  lastName: string | null;
+  imageUrl: string;
+}
 
 interface AuthContextType {
   currentUser: User | null;
@@ -26,47 +25,104 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { isLoaded, isSignedIn, user } = useUser();
+  const { signIn, setActive } = useSignIn();
+  const { signUp, setActive: setSignUpActive } = useSignUp();
+  const clerk = useClerk();
 
-  function signup(email: string, password: string) {
-    return createUserWithEmailAndPassword(auth, email, password);
+  // Convert Clerk user to our User interface
+  const currentUser: User | null = user
+    ? {
+        id: user.id,
+        email: user.primaryEmailAddress?.emailAddress || null,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        imageUrl: user.imageUrl,
+      }
+    : null;
+
+  async function signup(email: string, password: string) {
+    if (!signUp || !setSignUpActive) {
+      throw new Error('Clerk SignUp not loaded');
+    }
+
+    try {
+      // Create the user with email and password
+      const result = await signUp.create({
+        emailAddress: email,
+        password,
+      });
+
+      // Send email verification
+      await signUp.prepareEmailAddressVerification({ strategy: 'email_code' });
+
+      // For now, we'll set the session active without verification
+      // In production, you'd want to handle email verification
+      if (result.createdSessionId) {
+        await setSignUpActive({ session: result.createdSessionId });
+      }
+
+      return result;
+    } catch (error: any) {
+      throw new Error(error.errors?.[0]?.message || 'Signup failed');
+    }
   }
 
-  function login(email: string, password: string) {
-    return signInWithEmailAndPassword(auth, email, password);
+  async function login(email: string, password: string) {
+    if (!signIn || !setActive) {
+      throw new Error('Clerk SignIn not loaded');
+    }
+
+    try {
+      const result = await signIn.create({
+        identifier: email,
+        password,
+      });
+
+      if (result.status === 'complete') {
+        await setActive({ session: result.createdSessionId });
+        return result;
+      } else {
+        throw new Error('Login incomplete');
+      }
+    } catch (error: any) {
+      throw new Error(error.errors?.[0]?.message || 'Login failed');
+    }
   }
 
-  function logout() {
-    return signOut(auth);
+  async function logout() {
+    await clerk.signOut();
   }
 
-  function loginWithGoogle() {
-    const provider = new GoogleAuthProvider();
-    return signInWithPopup(auth, provider);
+  async function loginWithGoogle() {
+    if (!signIn || !setActive) {
+      throw new Error('Clerk SignIn not loaded');
+    }
+
+    try {
+      // Initiate OAuth flow with Google
+      await signIn.authenticateWithRedirect({
+        strategy: 'oauth_google',
+        redirectUrl: '/sso-callback',
+        redirectUrlComplete: '/',
+      });
+    } catch (error: any) {
+      throw new Error(error.errors?.[0]?.message || 'Google login failed');
+    }
   }
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, []);
 
   const value = {
-    currentUser,
+    currentUser: isSignedIn ? currentUser : null,
     signup,
     login,
     logout,
     loginWithGoogle,
-    loading
+    loading: !isLoaded,
   };
 
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {isLoaded && children}
     </AuthContext.Provider>
   );
 }
