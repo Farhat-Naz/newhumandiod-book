@@ -2,32 +2,26 @@
 sidebar_position: 1
 ---
 
-# Manage Docs Versions
+# Gestionar versiones de documentos
 
-Docusaurus can manage multiple versions of your docs.
+Docusaurus puede gestionar varias versiones de tus documentos.
 
-## Create a docs version
+## Crear una versión de documentos
 
-Release a version 1.0 of your project:
-
-```bash
+Libera una versión 1.0 de tu proyecto:```bash
 npm run docusaurus docs:version 1.0
-```
+```La`docs`la carpeta se copia en`versioned_docs/version-1.0`y`versions.json`se crea.
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
+Tus documentos ahora tienen 2 versiones:
 
-Your docs now have 2 versions:
+-`1.0`a las`http://localhost:3000/docs/`para los documentos de la versión 1.0
+-`current`a las`http://localhost:3000/docs/next/`para los **próximos documentos inéditos **
 
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
+## Añadir un menú desplegable de versión
 
-## Add a Version Dropdown
+Para navegar sin problemas entre las versiones, añade un menú desplegable de versiones.
 
-To navigate seamlessly across versions, add a version dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
+Modificar la`docusaurus.config.js`archivo:```js title="docusaurus.config.js"
 export default {
   themeConfig: {
     navbar: {
@@ -41,15 +35,12 @@ export default {
     },
   },
 };
-```
+```El menú desplegable de la versión de documentos aparece en la barra de navegación:
 
-The docs version dropdown appears in your navbar:
+![Menú desplegable de la versión de documentos](./img/docsVersionDropdown.png)
 
-![Docs Version Dropdown](./img/docsVersionDropdown.png)
+## Actualizar una versión existente
 
-## Update an existing version
+Es posible editar documentos versionados en sus respectivas carpetas:
 
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`
+-`versioned_docs/version-1.0/hello.md`actualizaciones`http://localhost:3000/docs/hello`-`docs/hello.md`actualizaciones`http://localhost:3000/docs/next/hello`

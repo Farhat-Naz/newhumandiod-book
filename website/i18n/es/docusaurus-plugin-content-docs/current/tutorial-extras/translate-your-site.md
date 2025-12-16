@@ -2,58 +2,40 @@
 sidebar_position: 2
 ---
 
-# Translate your site
+# Traduce tu sitio
 
-Let's translate `docs/intro.md` to French.
+Traduzcamos`docs/intro.md`al francés.
 
-## Configure i18n
+## Configurar i18n
 
-Modify `docusaurus.config.js` to add support for the `fr` locale:
-
-```js title="docusaurus.config.js"
+Modificar`docusaurus.config.js`para añadir soporte para el`fr`locale:```js title="docusaurus.config.js"
 export default {
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'fr'],
   },
 };
-```
+```## Traducir un documento
 
-## Translate a doc
-
-Copy the `docs/intro.md` file to the `i18n/fr` folder:
-
-```bash
+Copiar el`docs/intro.md`archivar al`i18n/fr`carpeta:```bash
 mkdir -p i18n/fr/docusaurus-plugin-content-docs/current/
 
 cp docs/intro.md i18n/fr/docusaurus-plugin-content-docs/current/intro.md
-```
-
-Translate `i18n/fr/docusaurus-plugin-content-docs/current/intro.md` in French.
-
-## Start your localized site
-
-Start your site on the French locale:
-
-```bash
+```Traducir`i18n/fr/docusaurus-plugin-content-docs/current/intro.md`en francés.&#10;&#10; ## Comienza tu sitio localizado&#10;&#10; Comience su sitio en la configuración regional francesa:```bash
 npm run start -- --locale fr
-```
+```Se puede acceder a su sitio localizado en [http://localhost:3000/fr/](http://localhost:3000/fr/) y el`Getting Started`página está traducida.
 
-Your localized site is accessible at [http://localhost:3000/fr/](http://localhost:3000/fr/) and the `Getting Started` page is translated.
+:::precaución
 
-:::caution
-
-In development, you can only use one locale at a time.
+En desarrollo, solo puede usar una configuración regional a la vez.
 
 :::
 
-## Add a Locale Dropdown
+## Añadir un menú desplegable de configuración regional
 
-To navigate seamlessly across languages, add a locale dropdown.
+Para navegar sin problemas entre idiomas, añade un menú desplegable de configuración regional.
 
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
+Modificar la`docusaurus.config.js`archivo:```js title="docusaurus.config.js"
 export default {
   themeConfig: {
     navbar: {
@@ -67,22 +49,14 @@ export default {
     },
   },
 };
-```
+```El menú desplegable de configuración regional aparece ahora en la barra de navegación:
 
-The locale dropdown now appears in your navbar:
+![Desplegable de configuración regional](./img/localeDropdown.png)
 
-![Locale Dropdown](./img/localeDropdown.png)
+## Construye tu sitio localizado
 
-## Build your localized site
-
-Build your site for a specific locale:
-
-```bash
+Crea tu sitio para una configuración regional específica:```bash
 npm run build -- --locale fr
-```
-
-Or build your site to include all the locales at once:
-
-```bash
+```O crea tu sitio para incluir todas las ubicaciones a la vez:```bash
 npm run build
 ```

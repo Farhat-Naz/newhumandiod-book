@@ -2,15 +2,13 @@
 sidebar_position: 4
 ---
 
-# Markdown Features
+# Características de Markdown
 
-Docusaurus supports **[Markdown](https://daringfireball.net/projects/markdown/syntax)** and a few **additional features**.
+Docusaurus admite **[Markdown](https://daringfireball.net/projects/markdown/syntax)** y algunas ** funciones adicionales **.
 
 ## Front Matter
 
-Markdown documents have metadata at the top called [Front Matter](https://jekyllrb.com/docs/front-matter/):
-
-```text title="my-doc.md"
+Los documentos de Markdown tienen metadatos en la parte superior llamados [Front Matter](https://jekyllrb.com/docs/front-matter/):```text title="my-doc.md"
 // highlight-start
 ---
 id: my-doc-id
@@ -23,50 +21,33 @@ slug: /my-custom-url
 ## Markdown heading
 
 Markdown text with [links](./hello.md)
-```
+```## Enlaces
 
-## Links
-
-Regular Markdown links are supported, using url paths or relative file paths.
-
-```md
+Se admiten enlaces regulares de Markdown, utilizando rutas URL o rutas de archivos relativas.```md
 Let's see how to [Create a page](/create-a-page).
 ```
 
 ```md
 Let's see how to [Create a page](./create-a-page.md).
-```
+```**Resultado:** Veamos cómo [crear una página](./create-a-page.md).
 
-**Result:** Let's see how to [Create a page](./create-a-page.md).
+## Imágenes
 
-## Images
+Se admiten imágenes regulares de Markdown.
 
-Regular Markdown images are supported.
-
-You can use absolute paths to reference images in the static directory (`static/img/your-image.png`):
-
-```md
+Puede usar rutas absolutas para hacer referencia a imágenes en el directorio estático (`static/img/your-image.png`):```md
 ![Your logo](/img/your-image.png)
-```
+```<!-- Ejemplo de imagen: añada sus propias imágenes a/img/estático -->
 
-<!-- Image example - add your own images to static/img/ -->
-
-You can reference images relative to the current file as well. This is particularly useful to colocate images close to the Markdown files using them:
-
-```md
+También puede hacer referencia a las imágenes relativas al archivo actual. Esto es particularmente útil para colocar imágenes cerca de los archivos Markdown que las utilizan:```md
 ![Docusaurus logo](./img/docusaurus.png)
-```
+```## Bloques de código
 
-## Code Blocks
-
-Markdown code blocks are supported with Syntax highlighting.
-
-````md
+Los bloques de código Markdown son compatibles con el resaltado de sintaxis.````md
 ```jsx title="src/components/HelloDocusaurus.js"
 function HelloDocusaurus() {
-  return <h1>Hello, Docusaurus!</h1>;
-}
-```
+return <h1>¡Hola, Docusaurus!</h1>;
+}```
 ````
 
 ```jsx title="src/components/HelloDocusaurus.js"
@@ -120,7 +101,7 @@ export const Highlight = ({children, color}) => (
       cursor: 'pointer',
     }}
     onClick={() => {
-      alert(`You clicked the color ${color} with label ${children}`)
+      alert(`Has hecho clic en el color ${color} con la etiqueta ${children}`)
     }}>
     {children}
   </span>
@@ -141,12 +122,12 @@ export const Highlight = ({children, color}) => (
       cursor: 'pointer',
     }}
     onClick={() => {
-      alert(`You clicked the color ${color} with label ${children}`);
-    }}>
+      alert(`Has hecho clic en el color ${color} con la etiqueta${children} `);
+}}&gt;
     {children}
   </span>
 );
 
-This is <Highlight color="#25c2a0">Docusaurus green</Highlight> !
+¡Este es <Highlight color="#25c2a0">Docusaurus green</Highlight>!
 
-This is <Highlight color="#1877F2">Facebook blue</Highlight> !
+¡Esto es <Highlight color="#1877F2">Facebook Blue</Highlight>!
