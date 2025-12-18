@@ -99,15 +99,22 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       throw new Error('Clerk SignIn not loaded');
     }
 
+    // Check if we're on the client side (Docusaurus uses SSR)
+    if (typeof window === 'undefined') {
+      throw new Error('Google login is only available on the client side');
+    }
+
     try {
       // Initiate OAuth flow with Google
-      await signIn.authenticateWithRedirect({
+      const result = await signIn.authenticateWithRedirect({
         strategy: 'oauth_google',
-        redirectUrl: '/sso-callback',
-        redirectUrlComplete: '/',
+        redirectUrl: window.location.origin + '/sso-callback',
+        redirectUrlComplete: window.location.origin + '/',
       });
+      return result;
     } catch (error: any) {
-      throw new Error(error.errors?.[0]?.message || 'Google login failed');
+      console.error('Google OAuth error:', error);
+      throw new Error(error.errors?.[0]?.message || error.message || 'Google login failed');
     }
   }
 
